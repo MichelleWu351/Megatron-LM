@@ -260,7 +260,7 @@ class TransformerBlock(MegatronModule):
 
                 l += self.config.recompute_num_layers
 
-        elif self.config.recompute_method == 'block':
+        elif self.config.recompute_method == 'block' and not self.config.prefech:
             # Checkpoint the input activation of only a set number of individual
             # Transformer layers and skip the rest.
             # A method fully use the device memory removing redundant re-computation.
